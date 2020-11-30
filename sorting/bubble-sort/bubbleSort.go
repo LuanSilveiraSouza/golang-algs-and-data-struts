@@ -1,13 +1,11 @@
 package sorting
 
-import "fmt"
-
-func BubbleSort(array [5]int) [5]int {
+func BubbleSort(array []int) []int {
 	swapped := true
 
 	for swapped {
 		swapped = false
-		for j := 0; j < 4; j++ {
+		for j := 0; j < len(array) - 1; j++ {
 			if array[j] > array[j + 1] {
 				swapped = true
 				aux := array[j]
@@ -15,7 +13,6 @@ func BubbleSort(array [5]int) [5]int {
 				array[j + 1] = aux
 			}
 		}
-		fmt.Println(array)
 	}
 
 	return array
