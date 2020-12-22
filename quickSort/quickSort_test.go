@@ -1,16 +1,35 @@
 package quickSort
 
 import (
+	"fmt"
 	"reflect"
 	"testing"
+	"time"
+	"github.com/LuanSilveiraSouza/golang-algs-and-data-struts/utils"
 )
 
 func TestQuickSort(t *testing.T) {
-	array := []int {34, 7, 2, 562, 6, 3}
+	tests := utils.GetArray()
 
-	result := Sort(array, 0, len(array) - 1)
+	for _, testCase	:= range tests {
+		testSetup(
+			t,
+			testCase.Unsorted,
+			testCase.Sorted,
+		)
+	} 
+}
 
-	if !reflect.DeepEqual(result, []int{2, 3, 6, 7, 34, 562}) {
+func testSetup(t *testing.T, array []int, sortedArray []int) {
+	t0 := time.Now()
+
+	result := Sort(array, 0, len(array)-1)
+
+	t1 := time.Now()
+
+	if !reflect.DeepEqual(result, sortedArray) {
 		t.Fatal("Result not expected")
 	}
+
+	fmt.Printf("Array length: %d\n Executed in: %dms\n", len(array), t1.Sub(t0))
 }
