@@ -5,11 +5,16 @@ import (
 	"reflect"
 	"testing"
 	"time"
+
 	"github.com/LuanSilveiraSouza/golang-algs-and-data-struts/utils"
 )
 
 func TestQuickSort(t *testing.T) {
-	tests := utils.GetArray()
+	tests, err := utils.GetArray()
+
+	if (err != nil) {
+		fmt.Println(err)
+	}
 
 	for _, testCase	:= range tests {
 		testSetup(
