@@ -36,5 +36,5 @@ func testSetup(t *testing.T, array []int, sortedArray []int) {
 		t.Fatal("Result not expected")
 	}
 
-	fmt.Printf("Array length: %d\n Executed in: %dms\n", len(array), t1.Sub(t0))
+	fmt.Printf("Array length: %d\n Executed in: %s\n", len(array), t1.Sub(t0).String())
 }

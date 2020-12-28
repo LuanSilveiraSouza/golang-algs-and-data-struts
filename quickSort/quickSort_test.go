@@ -12,17 +12,17 @@ import (
 func TestQuickSort(t *testing.T) {
 	tests, err := utils.GetArray()
 
-	if (err != nil) {
+	if err != nil {
 		fmt.Println(err)
 	}
 
-	for _, testCase	:= range tests {
+	for _, testCase := range tests {
 		testSetup(
 			t,
 			testCase.Unsorted,
 			testCase.Sorted,
 		)
-	} 
+	}
 }
 
 func testSetup(t *testing.T, array []int, sortedArray []int) {
@@ -36,5 +36,5 @@ func testSetup(t *testing.T, array []int, sortedArray []int) {
 		t.Fatal("Result not expected")
 	}
 
-	fmt.Printf("Array length: %d\n Executed in: %dms\n", len(array), t1.Sub(t0))
+	fmt.Printf("Array length: %d\n Executed in: %s\n", len(array), t1.Sub(t0).String())
 }
