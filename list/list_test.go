@@ -6,7 +6,7 @@ import (
 )
 
 func TestList(t *testing.T) {
-	list := New()
+	list := List{}
 
 	list.Push(2)
 	list.Push(4)
