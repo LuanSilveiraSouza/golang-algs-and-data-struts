@@ -1,6 +1,7 @@
 package doublyLinkedList
 
 import (
+	"fmt"
 	"reflect"
 	"testing"
 )
@@ -21,7 +22,6 @@ func TestList(t *testing.T) {
 		t.Fatal("Search method not worked as expected")
 	}
 
-	/*
 	list.Reverse()
 
 	result, err = list.Search(list.Size-1)
@@ -30,6 +30,9 @@ func TestList(t *testing.T) {
 	}
 	
 	result, err = list.Delete(1)
+
+	fmt.Println(result)
+
 	if !reflect.DeepEqual(result.value, 4) && reflect.DeepEqual(err, nil) {
 		t.Fatal("Delete method not worked as expected")
 	}
@@ -42,5 +45,4 @@ func TestList(t *testing.T) {
 	if !reflect.DeepEqual(result.value, 6) && reflect.DeepEqual(err, nil) {
 		t.Fatal("Search method not worked as expected")
 	}
-*/
 }

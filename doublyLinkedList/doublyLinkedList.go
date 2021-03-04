@@ -21,7 +21,7 @@ func NewDoublyLinkedList() DoublyLinkedList {
 }
 
 func (list *DoublyLinkedList) Insert(value interface{}) bool {
-	node := Node{value: value, prev: nil, next: nil}	
+	node := Node{value: value, prev: nil, next: nil}
 
 	if list.head == nil {
 		list.head = &node
@@ -56,45 +56,41 @@ func (list *DoublyLinkedList) Search(position int) (resultNode *Node, err error)
 	}
 }
 
-/*func (list *LinkedList) Delete(position int) (resultNode *Node, err error) {
+func (list *DoublyLinkedList) Delete(position int) (resultNode *Node, err error) {
 	targetNode, err := list.Search(position)
 
-	if err == nil {
-		node := list.head
+	if err == nil && list.Size > 1 {
+		prev := targetNode.prev
+		next := targetNode.next
 
-		for {
-			if node.link == targetNode {
-				node.link = targetNode.link
-				list.Size--
-				return targetNode, nil
-			}
-			node = node.link
-		}
+		prev.next = next
+		next.prev = prev
+		
+		list.Size--
 	}
-	return list.head, err
+	return targetNode, err
 }
 
-func (list *LinkedList) Reverse() {
+func (list *DoublyLinkedList) Reverse() {
 	node := list.head
 
-	var previousNode *Node
-	previousNode = nil
+	var temp *Node
 
-	var link *Node
+	if list.Size > 1 {
+		for {
+			temp = node.next
+			node.next = node.prev
+			node.prev = temp
 
-	for {
-		link = node.link
-		node.link = previousNode
-		previousNode = node
-		node = link
-
-		if node.link == nil {
-			node.link = previousNode
-			list.head = node
-			break
+			if temp != nil {
+				node = temp
+			} else {
+				list.head = node
+				break
+			}
 		}
 	}
-}*/
+}
 
 func (list *DoublyLinkedList) Display() {
 	fmt.Printf("head: %p\n", list.head)
