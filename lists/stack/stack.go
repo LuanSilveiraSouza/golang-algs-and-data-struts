@@ -1,12 +1,12 @@
-package stack
+package lists
 
 type Stack struct {
 	array []interface{}
-	Size int
+	Size  int
 }
 
 func (stack *Stack) Push(value interface{}) {
-	stack.array = append(stack.array, value) 
+	stack.array = append(stack.array, value)
 	stack.Size++
 }
 

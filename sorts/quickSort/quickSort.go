@@ -1,13 +1,13 @@
-package quickSort
+package sorts
 
-func Sort(array []int, low, high int) []int {
-	if (low > high) {
+func QuickSort(array []int, low, high int) []int {
+	if low > high {
 		return array
 	}
 
 	pivot := partition(array, low, high)
-	Sort(array, low, pivot - 1)
-	Sort(array, pivot + 1, high)
+	QuickSort(array, low, pivot-1)
+	QuickSort(array, pivot+1, high)
 
 	return array
 }

@@ -1,4 +1,4 @@
-package quickSort
+package sorts
 
 import (
 	"fmt"
@@ -28,7 +28,7 @@ func TestQuickSort(t *testing.T) {
 func testSetup(t *testing.T, array []int, sortedArray []int) {
 	t0 := time.Now()
 
-	result := Sort(array, 0, len(array)-1)
+	result := QuickSort(array, 0, len(array)-1)
 
 	t1 := time.Now()
 

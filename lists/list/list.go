@@ -1,8 +1,8 @@
-package list
+package lists
 
 type List struct {
 	array []interface{}
-	Size int
+	Size  int
 }
 
 func (list *List) Get(index int) interface{} {
@@ -19,7 +19,7 @@ func (list *List) Push(value interface{}) {
 	copy(newArray, list.array)
 
 	list.array = newArray
-	list.array[list.Size - 1] = value
+	list.array[list.Size-1] = value
 }
 
 func (list *List) Pop() {

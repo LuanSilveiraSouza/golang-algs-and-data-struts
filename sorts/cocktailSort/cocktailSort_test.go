@@ -1,4 +1,4 @@
-package mergeSort
+package sorts
 
 import (
 	"fmt"
@@ -9,26 +9,26 @@ import (
 	"github.com/LuanSilveiraSouza/golang-algs-and-data-struts/utils"
 )
 
-func TestMergeSort(t *testing.T) {
+func TestCocktailSort(t *testing.T) {
 	tests, err := utils.GetArray()
 
-	if (err != nil) {
+	if err != nil {
 		fmt.Println(err)
 	}
 
-	for _, testCase	:= range tests {
+	for _, testCase := range tests {
 		testSetup(
 			t,
 			testCase.Unsorted,
 			testCase.Sorted,
 		)
-	} 
+	}
 }
 
 func testSetup(t *testing.T, array []int, sortedArray []int) {
 	t0 := time.Now()
 
-	result := Sort(array)
+	result := CocktailSort(array)
 
 	t1 := time.Now()
 

@@ -1,6 +1,6 @@
-package bubbleSort
+package sorts
 
-func Sort(array []int) []int {
+func BubbleSort(array []int) []int {
 	swapped := true
 
 	for swapped {

@@ -1,12 +1,12 @@
-package queue
+package lists
 
 type Queue struct {
 	array []interface{}
-	Size int
+	Size  int
 }
 
 func (queue *Queue) Push(value interface{}) {
-	queue.array = append([]interface{}{value}, queue.array...) 
+	queue.array = append([]interface{}{value}, queue.array...)
 
 	queue.Size++
 }

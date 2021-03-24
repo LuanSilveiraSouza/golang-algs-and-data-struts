@@ -1,4 +1,4 @@
-package mergeSort
+package sorts
 
 func merge(a []int, b []int) []int {
 	array := make([]int, len(a)+len(b))
@@ -28,14 +28,14 @@ func merge(a []int, b []int) []int {
 	return array
 }
 
-func Sort(array []int) []int {
+func MergeSort(array []int) []int {
 	if len(array) < 2 {
 		return array
 	}
 
 	middle := len(array) / 2
-	a := Sort(array[:middle])
-	b := Sort(array[middle:])
+	a := MergeSort(array[:middle])
+	b := MergeSort(array[middle:])
 
 	return merge(a, b)
 }

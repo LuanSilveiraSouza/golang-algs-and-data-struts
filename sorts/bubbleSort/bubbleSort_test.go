@@ -1,4 +1,4 @@
-package bubbleSort
+package sorts
 
 import (
 	"fmt"
@@ -28,7 +28,7 @@ func TestBubbleSort(t *testing.T) {
 func testSetup(t *testing.T, array []int, sortedArray []int) {
 	t0 := time.Now()
 
-	result := Sort(array)
+	result := BubbleSort(array)
 
 	t1 := time.Now()
 

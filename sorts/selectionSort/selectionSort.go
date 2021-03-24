@@ -1,6 +1,6 @@
-package selectionSort
+package sorts
 
-func Sort(array []int) []int {
+func SelectionSort(array []int) []int {
 	for i := 0; i < len(array); i++ {
 		small := i
 		for j := i + 1; j < len(array); j++ {

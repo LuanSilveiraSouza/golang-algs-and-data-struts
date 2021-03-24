@@ -1,4 +1,4 @@
-package list
+package lists
 
 import (
 	"reflect"
@@ -19,7 +19,7 @@ func TestList(t *testing.T) {
 	if !reflect.DeepEqual(list.Get(1), 4) {
 		t.Fatal("Get method not worked as expected")
 	}
-	
+
 	list.Pop()
 	list.Pop()
 
