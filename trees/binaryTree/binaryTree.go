@@ -52,18 +52,18 @@ func (tree *BinaryTree) Insert(value int) bool {
 }
 
 func (tree *BinaryTree) Display() {
-	fmt.Printf("head: %p\n", tree.Root)
+	fmt.Printf("root: %p\n", tree.Root)
 
 	loopNode(tree.Root, 0)
 }
 
 func loopNode(node *Node, level int) {
 	fmt.Printf("value: %v\tleft: %p \tright: %p\n", node.Value, node.Left, node.Right)
-	
+
 	if node.Left != nil {
-		loopNode(node.Left, level + 1)
+		loopNode(node.Left, level+1)
 	}
 	if node.Right != nil {
-		loopNode(node.Right, level + 1)
+		loopNode(node.Right, level+1)
 	}
 }

@@ -1,4 +1,4 @@
-package binarySearch
+package search
 
 import (
 	"fmt"
@@ -11,7 +11,7 @@ import (
 func TestBinarySearch(t *testing.T) {
 	tests, err := utils.GetArray()
 
-	if (err != nil) {
+	if err != nil {
 		fmt.Println(err)
 	}
 

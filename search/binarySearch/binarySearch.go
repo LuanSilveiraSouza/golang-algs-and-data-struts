@@ -1,4 +1,4 @@
-package binarySearch
+package search
 
 func BinarySearch(array []int, value int, low int, high int) int {
 	middle := (high + low) / 2
