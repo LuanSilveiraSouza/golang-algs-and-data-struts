@@ -1,6 +1,9 @@
 package binarySearchTree
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 type Node struct {
 	Value int
@@ -10,25 +13,22 @@ type Node struct {
 
 type BinarySearchTree struct {
 	Root *Node
-	Size int
 }
 
 func NewBinarySearchTree() BinarySearchTree {
-	return BinarySearchTree{nil, 0}
+	return BinarySearchTree{nil}
 }
 
 func (tree *BinarySearchTree) Insert(value int) {
 	newNode := Node{value, nil, nil}
 	if tree.Root == nil {
 		tree.Root = &newNode
-		tree.Size++
 	} else {
 		currentNode := tree.Root
 		for {
 			if value < currentNode.Value {
 				if currentNode.Left == nil {
 					currentNode.Left = &newNode
-					tree.Size++
 					break
 				} else {
 					currentNode = currentNode.Left
@@ -37,7 +37,6 @@ func (tree *BinarySearchTree) Insert(value int) {
 			} else if value > currentNode.Value {
 				if currentNode.Right == nil {
 					currentNode.Right = &newNode
-					tree.Size++
 					break
 				} else {
 					currentNode = currentNode.Right
@@ -47,10 +46,27 @@ func (tree *BinarySearchTree) Insert(value int) {
 			break
 		}
 	}
-
 }
 
-func (tree *BinarySearchTree) Display() {
+func (tree *BinarySearchTree) Search(value int) (*Node, error) {
+	currentNode := tree.Root
+
+	for {
+		if currentNode == nil {
+			return nil, errors.New("value dont exists in the tree")
+		} else {
+			if currentNode.Value == value {
+				return currentNode, nil
+			} else if value < currentNode.Value {
+				currentNode = currentNode.Left
+			} else {
+				currentNode = currentNode.Right
+			}
+		}
+	}
+}
+
+func (tree *BinarySearchTree) LevelOrderTraversal() {
 	loopNode(tree.Root)
 }
 
