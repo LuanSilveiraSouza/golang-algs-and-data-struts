@@ -1,7 +1,7 @@
 ## Binary Search
 
 <p align="center">
-    <img src="../.github/binarysearch.gif">
+    <img src="../../.github/binarysearch.gif">
 </p>
 
 Binary Search is a simple but powerful searching algorithm that can be implemented with recursion or common loops. Its simplicity enables anyone to fast understand it and start to use. 

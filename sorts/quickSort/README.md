@@ -1,7 +1,7 @@
 ## Quick Sort
 
 <p align="center">
-    <img src="../.github/quicksort.gif">
+    <img src="../../.github/quicksort.gif">
 </p>
 
 Quick Sort is one of the most used sorting algorithms. It doesn't have the best performance on its worst case-scenarios, but its medium case-scenarios performs very well. It applies the Divide-And-Conquer strategy together a recursive methodology. 
