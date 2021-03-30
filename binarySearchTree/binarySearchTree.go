@@ -66,19 +66,18 @@ func (tree *BinarySearchTree) Search(value int) (*Node, error) {
 	}
 }
 
-func (tree *BinarySearchTree) BreadthTraversal() {
-	loopNode(tree.Root)
-}
-
-func loopNode(node *Node) {
-	if node != nil {
-		fmt.Printf("node %v \tvalue: %v\tleft: %p \tright: %p\n", &node, node.Value, node.Left, node.Right)
-
-		if node.Left != nil {
-			loopNode(node.Left)
+func (tree *BinarySearchTree) InOrderTraversal(root *Node) {
+	if root != nil {
+		if root.Left != nil {
+			tree.InOrderTraversal(root.Left)
 		}
-		if node.Right != nil {
-			loopNode(node.Right)
+		PrintNode(root)
+		if root.Right != nil {
+			tree.InOrderTraversal(root.Right)
 		}
 	}
+}
+
+func PrintNode(node *Node) {
+	fmt.Printf("node %v \tvalue: %v\tleft: %p \tright: %p\n", &node, node.Value, node.Left, node.Right)
 }

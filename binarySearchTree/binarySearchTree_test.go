@@ -13,7 +13,7 @@ func TestBinaryTree(t *testing.T) {
 	tree.Insert(6)
 	tree.Insert(8)
 
-	tree.BreadthTraversal()
+	tree.InOrderTraversal(tree.Root)
 
 	searched, error := tree.Search(6)
 
