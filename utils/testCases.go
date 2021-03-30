@@ -16,7 +16,7 @@ func GetArray() ([]TestArray, error) {
 	var tests []TestArray
 
 	pwd, _ := os.Getwd()
-	jsonFile, err := os.Open(pwd + "/../../utils/arrays.json")
+	jsonFile, err := os.Open(pwd + "/../utils/arrays.json")
 
 	if err != nil {
 		return nil, errors.New("cannot open json file")
