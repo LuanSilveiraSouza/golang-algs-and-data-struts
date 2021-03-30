@@ -1,7 +1,7 @@
 ## Merge Sort
 
 <p align="center">
-    <img src="../../.github/mergesort.gif">
+    <img src="../.github/mergesort.gif">
 </p>
 
 Merge Sort is a classification algorithm that uses the Divide and Conquer strategy, having solid performances even in its worst scenarios.
