@@ -18,10 +18,10 @@ func TestBinarySearch(t *testing.T) {
 	array := tests[0].Sorted
 
 	if !reflect.DeepEqual(BinarySearch(array, 94, 0, len(array)), 2) {
-		t.Fatal("Binary Search failed")
+		t.Fatal("binary Search failed")
 	}
 
 	if !reflect.DeepEqual(BinarySearch(array, 9991, 0, len(array)), 99) {
-		t.Fatal("Binary Search failed")
+		t.Fatal("binary Search failed")
 	}
 }

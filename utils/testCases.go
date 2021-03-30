@@ -16,10 +16,10 @@ func GetArray() ([]TestArray, error) {
 	var tests []TestArray
 
 	pwd, _ := os.Getwd()
-	jsonFile, err := os.Open(pwd + "/../utils/arrays.json")
+	jsonFile, err := os.Open(pwd + "/../../utils/arrays.json")
 
 	if err != nil {
-		return nil, errors.New("Cannot open json file")
+		return nil, errors.New("cannot open json file")
 	}
 
 	defer jsonFile.Close()
@@ -28,5 +28,5 @@ func GetArray() ([]TestArray, error) {
 
 	json.Unmarshal(byteArray, &tests)
 
-	return tests, nil 
+	return tests, nil
 }

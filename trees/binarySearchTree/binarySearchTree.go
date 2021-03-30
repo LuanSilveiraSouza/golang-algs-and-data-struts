@@ -66,7 +66,7 @@ func (tree *BinarySearchTree) Search(value int) (*Node, error) {
 	}
 }
 
-func (tree *BinarySearchTree) LevelOrderTraversal() {
+func (tree *BinarySearchTree) BreadthTraversal() {
 	loopNode(tree.Root)
 }
 
