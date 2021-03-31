@@ -20,61 +20,79 @@ func NewAvlTree() avlTree {
 	return avlTree{nil}
 }
 
-func getMaxHeight(node *Node) int {
-	if node.Left.Height > node.Right.Height {
-		return node.Left.Height
+func getHeight(node *Node) int {
+	if node == nil {
+		return 0
 	}
-	return node.Right.Height
+	return node.Height
 }
 
-func balanceTree(currentNode *Node, value int) {
-	currentNode.Height = 1 + getMaxHeight(currentNode)
-
-	balance := currentNode.Left.Height - currentNode.Right.Height
-
-	if balance > 1 && value < currentNode.Left.Value {
-		// Left rotation
-	} else if balance < -1 && value > currentNode.Right.Value {
-		// Right rotation
-	} else if balance > 1 && value > currentNode.Left.Value {
-		// Left Right rotation
-	} else if balance < -1 && value < currentNode.Right.Value {
-		// Right Left rotation
+func max(a, b int) int {
+	if a > b {
+		return a
 	}
+	return b
+}
+
+func rotateLeft(node *Node) *Node {
+	rightNode := node.Right
+	rightLeftNode := rightNode.Left
+
+	rightNode.Left = node
+	node.Right = rightLeftNode
+
+	node.Height = 1 + max(getHeight(node.Left), getHeight(node.Right))
+	rightNode.Height = 1 + max(getHeight(rightNode.Left), getHeight(rightNode.Right))
+
+	return rightNode
+}
+
+func rotateRight(node *Node) *Node {
+	leftNode := node.Left
+	leftRightNode := leftNode.Right
+
+	leftNode.Right = node
+	node.Left = leftRightNode
+
+	node.Height = 1 + max(getHeight(node.Left), getHeight(node.Right))
+	leftNode.Height = 1 + max(getHeight(leftNode.Left), getHeight(leftNode.Right))
+
+	return leftNode
+}
+
+func insert(node *Node, value int) *Node {
+	if node == nil {
+		node = &Node{Value: value, Height: 1}
+		return node
+	} else if value < node.Value {
+		node.Left = insert(node.Left, value)
+	} else if value > node.Value {
+		node.Right = insert(node.Right, value)
+	} else {
+		return node
+	}
+
+	node.Height = 1 + max(getHeight(node.Left), getHeight(node.Right))
+
+	balance := getHeight(node.Left) - getHeight(node.Right)
+
+	if balance > 1 && value < node.Left.Value {
+		return rotateRight(node)
+	} else if balance < -1 && value > node.Right.Value {
+		return rotateLeft(node)
+	} else if balance > 1 && value > node.Left.Value {
+		node.Left = rotateLeft(node.Left)
+		return rotateRight(node)
+	} else if balance < -1 && value < node.Right.Value {
+		node.Right = rotateRight(node.Right)
+		return rotateLeft(node)
+	}
+
+	return node
 }
 
 func (tree *avlTree) Insert(value int) {
-	newNode := Node{value, nil, nil, 0}
-
-	if tree.Root == nil {
-		tree.Root = &newNode
-	} else {
-		currentNode := tree.Root
-		for {
-			if value < currentNode.Value {
-				if currentNode.Left == nil {
-					currentNode.Left = &newNode
-
-					balanceTree(currentNode, value)
-
-					break
-				}
-				currentNode = currentNode.Left
-				continue
-			} else if value > currentNode.Value {
-				if currentNode.Right == nil {
-					currentNode.Right = &newNode
-
-					balanceTree(currentNode, value)
-
-					break
-				}
-				currentNode = currentNode.Right
-				continue
-			}
-			break
-		}
-	}
+	tree.Root = insert(tree.Root, value)
 }
 
 func (tree *avlTree) Search(value int) (*Node, error) {
@@ -108,5 +126,5 @@ func (tree *avlTree) InOrderTraversal(root *Node) {
 }
 
 func PrintNode(node *Node) {
-	fmt.Printf("node %v \tvalue: %v\tleft: %p \tright: %p\n", &node, node.Value, node.Left, node.Right)
+	fmt.Printf("node %p \tvalue: %v \theight: %v \tleft: %p \tright: %p\n", node, node.Value, node.Height, node.Left, node.Right)
 }
