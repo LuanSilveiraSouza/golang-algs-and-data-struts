@@ -112,7 +112,7 @@ func (list *LinkedList) Display() {
 
 	node := list.head
 
-	for {
+	for node != nil {
 		fmt.Printf("value: %v\tlink: %p\n", node.value, node.link)
 
 		if node.link == nil {
