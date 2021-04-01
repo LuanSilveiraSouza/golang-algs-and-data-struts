@@ -16,14 +16,19 @@ func TestList(t *testing.T) {
 		t.Fatal("Size attribute not worked as expected")
 	}
 
-	result, err := list.Search(list.Size - 2)
+	result, err := list.Get(list.Size - 2)
 	if !reflect.DeepEqual(result.value, 4) && reflect.DeepEqual(err, nil) {
+		t.Fatal("Get method not worked as expected")
+	}
+
+	searched := list.Search(7)
+	if reflect.DeepEqual(searched, nil) {
 		t.Fatal("Search method not worked as expected")
 	}
 
 	list.Reverse()
 
-	result, err = list.Search(list.Size - 1)
+	result, err = list.Get(list.Size - 1)
 	if !reflect.DeepEqual(result.value, 2) && reflect.DeepEqual(err, nil) {
 		t.Fatal("Reverse method not worked as expected")
 	}
@@ -37,7 +42,7 @@ func TestList(t *testing.T) {
 		t.Fatal("Size attribute not worked as expected")
 	}
 
-	result, err = list.Search(0)
+	result, err = list.Get(0)
 	if !reflect.DeepEqual(result.value, 6) && reflect.DeepEqual(err, nil) {
 		t.Fatal("Search method not worked as expected")
 	}

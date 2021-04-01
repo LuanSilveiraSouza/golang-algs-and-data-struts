@@ -26,7 +26,7 @@ func (list *LinkedList) Insert(value interface{}) bool {
 		list.head = &node
 		list.Size++
 	} else {
-		lastNode, err := list.Search(list.Size - 1)
+		lastNode, err := list.Get(list.Size - 1)
 
 		if err == nil {
 			lastNode.link = &node
@@ -37,7 +37,7 @@ func (list *LinkedList) Insert(value interface{}) bool {
 	return false
 }
 
-func (list *LinkedList) Search(position int) (resultNode *Node, err error) {
+func (list *LinkedList) Get(position int) (resultNode *Node, err error) {
 	node := list.head
 
 	if position >= list.Size || position < 0 {
@@ -54,8 +54,21 @@ func (list *LinkedList) Search(position int) (resultNode *Node, err error) {
 	}
 }
 
+func (list *LinkedList) Search(key interface{}) (resultNode *Node) {
+	node := list.head
+
+	for {
+		if node == nil {
+			return nil
+		} else if node.value == key {
+			return node
+		}
+		node = node.link
+	}
+}
+
 func (list *LinkedList) Delete(position int) (resultNode *Node, err error) {
-	targetNode, err := list.Search(position)
+	targetNode, err := list.Get(position)
 
 	if err == nil {
 		node := list.head
