@@ -15,7 +15,7 @@ func TestHashTable(t *testing.T) {
 
 	table.Display()
 
-	if !reflect.DeepEqual(table.Size, 3) {
+	if !reflect.DeepEqual(table.Size, 4) {
 		t.Fatal("Size attribute not worked as expected")
 	}
 

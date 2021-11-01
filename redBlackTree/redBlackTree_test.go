@@ -15,7 +15,7 @@ func TestBinaryTree(t *testing.T) {
 
 	tree.InOrderTraversal(tree.root)
 
-	searched, error := tree.Search(1)
+	searched, error := tree.Search(3)
 
 	if !reflect.DeepEqual(error, nil) {
 		t.Fatal("Search method not worked as expected")
